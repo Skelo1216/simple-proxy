@@ -4,6 +4,11 @@ const html = /* html */ `<!doctype html>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <title>Money</title>
+<script>
+  if (localStorage.getItem('moneyAuth') !== 'true') {
+    window.location.replace('/login');
+  }
+</script>
 <style>
   :root {
     color-scheme: dark;
@@ -300,7 +305,7 @@ const html = /* html */ `<!doctype html>
 <div id="app">
   <header class="top">
     <h1>Money</h1>
-    <button class="icon-btn" aria-label="Account">
+    <button class="icon-btn" id="logoutBtn" aria-label="Log out">
       <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="white" stroke-width="1.6"/><circle cx="12" cy="10" r="3.2" stroke="white" stroke-width="1.6"/><path d="M5.5 18.5C6.8 16 9.2 15 12 15c2.8 0 5.2 1 6.5 3.5" stroke="white" stroke-width="1.6" stroke-linecap="round"/></svg>
     </button>
   </header>
@@ -505,6 +510,11 @@ const html = /* html */ `<!doctype html>
 
   document.getElementById('depositBtn').addEventListener('click', function () { openSheet('deposit'); });
   document.getElementById('withdrawBtn').addEventListener('click', function () { openSheet('withdraw'); });
+
+  document.getElementById('logoutBtn').addEventListener('click', function () {
+    localStorage.removeItem('moneyAuth');
+    window.location.replace('/login');
+  });
 
   render(loadBalance());
 })();
