@@ -6,7 +6,7 @@ const html = /* html */ `<!doctype html>
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-<title>Log in - Money</title>
+<title>Sign in | Meridian Bank</title>
 <script>
   if (localStorage.getItem('moneyAuth') === 'true') {
     window.location.replace('/money');
@@ -14,14 +14,15 @@ const html = /* html */ `<!doctype html>
 </script>
 <style>
   :root {
-    color-scheme: dark;
-    --bg: #000000;
-    --card: #1c1c1e;
-    --text: #ffffff;
-    --muted: #9a9a9e;
-    --pill: #3a3a3c;
-    --green: #00d54b;
-    --red: #ff5b5b;
+    color-scheme: light;
+    --brand: #0057b8;
+    --brand-dark: #00397d;
+    --bg: #f2f4f7;
+    --card: #ffffff;
+    --border: #e1e5ea;
+    --text: #1b1f23;
+    --muted: #5b6470;
+    --red: #c0272d;
   }
   * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
   html, body {
@@ -32,24 +33,55 @@ const html = /* html */ `<!doctype html>
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     height: 100%;
   }
-  #app {
-    max-width: 420px;
-    margin: 0 auto;
+  .login-wrap {
     min-height: 100vh;
     display: flex;
-    flex-direction: column;
+    align-items: center;
     justify-content: center;
     padding: 24px;
   }
-  h1 {
-    font-size: 30px;
+  .login-card {
+    width: 100%;
+    max-width: 380px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 32px 28px;
+    box-shadow: 0 8px 30px rgba(20,24,28,0.06);
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+  .brand-mark {
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    background: var(--brand);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 17px;
+  }
+  .brand-name {
     font-weight: 700;
-    margin: 0 0 6px;
+    font-size: 18px;
+  }
+  h1 {
+    font-size: 20px;
+    text-align: center;
+    margin: 0 0 4px;
   }
   p.sub {
     color: var(--muted);
-    margin: 0 0 32px;
-    font-size: 15px;
+    text-align: center;
+    margin: 0 0 26px;
+    font-size: 14px;
   }
   label {
     display: block;
@@ -63,56 +95,63 @@ const html = /* html */ `<!doctype html>
   }
   input {
     width: 100%;
-    background: var(--card);
-    border: 1px solid #2c2c2e;
-    border-radius: 14px;
-    padding: 14px 16px;
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px 14px;
     color: var(--text);
-    font-size: 16px;
+    font-size: 15px;
     outline: none;
   }
   input:focus {
-    border-color: var(--green);
+    border-color: var(--brand);
+    box-shadow: 0 0 0 3px rgba(0,87,184,0.12);
   }
   .error {
     color: var(--red);
-    font-size: 14px;
-    margin: 0 0 16px;
-    min-height: 18px;
+    font-size: 13px;
+    margin: 0 0 14px;
+    min-height: 16px;
   }
   button.submit {
     width: 100%;
-    background: var(--green);
-    color: #012a10;
+    background: var(--brand);
+    color: #fff;
     border: none;
-    border-radius: 999px;
-    padding: 15px 0;
-    font-size: 16px;
+    border-radius: 8px;
+    padding: 13px 0;
+    font-size: 15px;
     font-weight: 700;
     cursor: pointer;
-    margin-top: 8px;
+    margin-top: 6px;
   }
-  button.submit:active {
-    opacity: 0.8;
+  button.submit:hover {
+    background: var(--brand-dark);
   }
 </style>
 </head>
 <body>
-<div id="app">
-  <h1>Money</h1>
-  <p class="sub">Log in to view your balance.</p>
-  <form id="loginForm" novalidate>
-    <div class="field">
-      <label for="email">Email</label>
-      <input id="email" name="email" type="email" autocomplete="username" placeholder="you@example.com" />
+<div class="login-wrap">
+  <div class="login-card">
+    <div class="brand">
+      <span class="brand-mark">M</span>
+      <span class="brand-name">Meridian Bank</span>
     </div>
-    <div class="field">
-      <label for="password">Password</label>
-      <input id="password" name="password" type="password" autocomplete="current-password" placeholder="Password" />
-    </div>
-    <p class="error" id="error"></p>
-    <button class="submit" type="submit">Log in</button>
-  </form>
+    <h1>Sign in</h1>
+    <p class="sub">Access your online banking account.</p>
+    <form id="loginForm" novalidate>
+      <div class="field">
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" autocomplete="username" placeholder="you@example.com" />
+      </div>
+      <div class="field">
+        <label for="password">Password</label>
+        <input id="password" name="password" type="password" autocomplete="current-password" placeholder="Password" />
+      </div>
+      <p class="error" id="error"></p>
+      <button class="submit" type="submit">Sign in</button>
+    </form>
+  </div>
 </div>
 
 <script>
