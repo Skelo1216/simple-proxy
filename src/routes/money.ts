@@ -310,6 +310,19 @@ const html = /* html */ `<!doctype html>
     transform: translateX(-50%) translateY(0);
   }
 
+  .watermark {
+    position: fixed;
+    bottom: 14px;
+    right: 16px;
+    font-size: 11px;
+    color: var(--muted);
+    background: rgba(255,255,255,0.9);
+    padding: 5px 10px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    z-index: 5;
+  }
+
   @media (max-width: 560px) {
     .topnav-links { display: none; }
     .account-balance { font-size: 32px; }
@@ -416,6 +429,8 @@ const html = /* html */ `<!doctype html>
 </div>
 
 <div class="toast" id="toast"></div>
+
+<div class="watermark">Demo &mdash; simulated balances only</div>
 
 <script>
 (function () {
