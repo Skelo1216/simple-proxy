@@ -246,7 +246,7 @@ const html = /* html */ `<!doctype html>
   .sheet p.hint {
     margin: 0 0 18px;
     color: var(--muted);
-    font-size: 13px;
+    font-size: 11px;
   }
   .amount-input-wrap {
     display: flex;
@@ -308,19 +308,6 @@ const html = /* html */ `<!doctype html>
   .toast.show {
     opacity: 1;
     transform: translateX(-50%) translateY(0);
-  }
-
-  .watermark {
-    position: fixed;
-    bottom: 14px;
-    right: 16px;
-    font-size: 11px;
-    color: var(--muted);
-    background: rgba(255,255,255,0.9);
-    padding: 5px 10px;
-    border-radius: 6px;
-    border: 1px solid var(--border);
-    z-index: 5;
   }
 
   @media (max-width: 560px) {
@@ -429,8 +416,6 @@ const html = /* html */ `<!doctype html>
 </div>
 
 <div class="toast" id="toast"></div>
-
-<div class="watermark">Demo &mdash; simulated balances only</div>
 
 <script>
 (function () {
